@@ -19,11 +19,11 @@ router.get('/grafica', (req: Request, res: Response) => {
 
 router.post('/grafica', (req: Request, res: Response) => {
     // Recibimos los parametros pasado por el cuerpo
-    const opcion: number = Number(req.body.opcion);
-    const unidades: number = Number(req.body.valor);
+    const mes: string = req.body.mes;
+    const valor: number = Number(req.body.valor);
 
     
-    grafica.incrementarValor(opcion, unidades) ;
+    grafica.incrementarValor(mes, valor) ;
 
     const server = Server.instance;
 

@@ -1,32 +1,32 @@
-/**
- * Este código es del backend para la gráfica de encuestas en tiempo real
- */
-
 export class GraficaData {
 
-    private labels: string[] = [];
-    private valores: number[] = [0, 0, 0, 0];
+    private meses: string[] = ['enero', 'febrero', 'marzo', 'abril'];
+    private valores: number[] = [1,2,3,4];
 
-    constructor() {
-    }
 
-    setLabels(labels: string[]) {
-        this.labels = labels;
-    }
+    constructor() { }
 
     getDataGrafica() {
         return [
             {
                 data: this.valores,
-                label: 'Preguntas'
+                label: 'Ventas'
             }
         ];
     }
 
-    incrementarValor(opcion: number, valor: number) {
-        if (opcion <= this.valores.length) {
-            this.valores[opcion - 1] += valor;
+    incrementarValor(mes: string, valor: number) {
+
+        mes = mes.toLowerCase().trim();
+
+        for (let i in this.meses) {
+
+            if (this.meses[i] === mes) {
+                this.valores[i] += valor;
+            }
+
         }
+
         return this.getDataGrafica();
     }
 
